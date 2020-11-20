@@ -81,6 +81,7 @@ func (h *handler) PostCoffee(w http.ResponseWriter, r *http.Request) {
 			zap.L().Error("Failed marking coffee as failed", zap.String("name", coffee.Name), zap.Error(err))
 		}
 	}
+	util.SuccessResponse(w, coffee)
 }
 
 func checkCoffee(coffee *model.Coffee) error {

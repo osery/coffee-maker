@@ -10,6 +10,7 @@ import (
 )
 
 func SuccessResponse(w http.ResponseWriter, payload interface{}) {
+	w.Header().Set("Content-Type", "application/json")
 	err := json.NewEncoder(w).Encode(payload)
 	if err != nil {
 		zap.L().Error("Writing response failed", zap.Error(err))
