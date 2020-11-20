@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coffee-maker
+  labels:
+    app: coffee-maker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coffee-maker
+  template:
+    metadata:
+      labels:
+        app: coffee-maker
+    spec:
+      containers:
+        - image: ghcr.io/osery/coffee-maker
+          name: coffee-maker
+          ports:
+            - containerPort: 3334
+              protocol: TCP
